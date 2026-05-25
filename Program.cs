@@ -32,6 +32,19 @@ namespace JsonAssignment
     {
         static void Main()
         {
+            // XML reader (theory example)
+            string xmlPath = "users.xml";
+            System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+            doc.Load(xmlPath);
+            Console.WriteLine("=== XML data from users.xml ===");
+            foreach (System.Xml.XmlNode node in doc.SelectNodes("/users/user"))
+            {
+                string name = node.SelectSingleNode("name")?.InnerText ?? "";
+                string age = node.SelectSingleNode("age")?.InnerText ?? "";
+                string city = node.SelectSingleNode("city")?.InnerText ?? "";
+                Console.WriteLine($"Name: {name}, Age: {age}, City: {city}");
+            }
+            Console.WriteLine();
             // ----------------------------------------------
             // Task 1 & 3: read manual JSON, deserialize, loop
             // ----------------------------------------------
