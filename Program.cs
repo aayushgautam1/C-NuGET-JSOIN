@@ -13,6 +13,20 @@ namespace JsonAssignment
         public override string ToString() => $"{Name}, {Age}, {City}";
     }
 
+    // Task 4: inheritance – Admin and RegularUser
+    public class Admin : User
+    {
+        public string AdminLevel { get; set; }
+        public string[] Permissions { get; set; }
+        public override string ToString() => base.ToString() + $", Admin: {AdminLevel}, [{string.Join(",", Permissions)}]";
+    }
+
+    public class RegularUser : User
+    {
+        public int LoyaltyPoints { get; set; }
+        public override string ToString() => base.ToString() + $", Loyalty: {LoyaltyPoints}";
+    }
+
     class Program
     {
         static void Main()
