@@ -21,7 +21,16 @@ namespace JsonAssignment
             string json = File.ReadAllText(filePath);
             List<User> users = JsonConvert.DeserializeObject<List<User>>(json);
 
-            Console.WriteLine("=== Users from users.json ===");
+            Console.WriteLine("=== Initial users ===");
+            foreach (var u in users)
+                Console.WriteLine(u);
+
+            // Task 2: add new user
+            users.Add(new User { Name = "Alice Brown", Age = 28, City = "Chicago" });
+            string updatedJson = JsonConvert.SerializeObject(users, Formatting.Indented);
+            File.WriteAllText(filePath, updatedJson);
+
+            Console.WriteLine("\n=== After adding Alice Brown ===");
             foreach (var u in users)
                 Console.WriteLine(u);
         }
